@@ -1,5 +1,5 @@
 <% if @book.errors.any? %>
-  <%= @book.errors.count %>件のエラーが発生しました
+  <%= @book.errors.count %>error prohibited this obj from being saved:
   <ul>
     <% @book.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -18,19 +18,22 @@
 
         <div class="form-group">
           <label for="book_title">Title</label>
-          <%= f.text_field :book_name %>
+          <%= f.text_field :title %>
           </div>
 
         <div class="from-group">
           <label for="book-opinion">Opinion</label>
-          < <%= f.text_area :caption %>
+          <%= f.text_area :body %>
         </div>
 
         <div class="from-group">
-         <%= f.submit '保存' %>
+         <%= f.submit 'Update Book' %>
          </div>
-        <% end %>
 
+       <% end %>
+
+       <div><%= link_to "Show",book_path(@book.id) %></div>
+       <div><%= link_to "Back",books_path %></div>
       </div>
     </div>
   </div>

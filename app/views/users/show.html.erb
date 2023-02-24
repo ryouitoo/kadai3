@@ -44,8 +44,14 @@
                 <% end %>
               </div>
               </td>
-              <td><%=book.book_name %></td>
-              <td><%=book.caption %></td>
+              <td>
+                <div>
+                  <%= link_to book_path(book.id) do %>
+                  <%=book.title %>
+                  <% end %>
+                  </div>
+                  </td>
+              <td><%=book.body %></td>
 
 
             </tr>

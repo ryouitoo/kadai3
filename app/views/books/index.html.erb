@@ -1,19 +1,19 @@
 <main>
+
+  <% if @book.errors.any? %>
+  <%= @book.errors.count %>error prohibited this obj from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
   <P id="notice"></P>
   <div class="container px-5 px-sm-0">
     <div class="row">
 
       <div class="col-md-3">
-      <h2>User info</h2>
-
-      <!--ユーザーアイコン-->
-      <table class="table">
-        <tbody>
-          <tr></tr>
-          <tr></tr>
-
-        </tbody>
-      </table>
       <%= render 'new',book: @book %>
       </div>
 
@@ -45,11 +45,11 @@
              <td>
                <div>
                  <%= link_to book_path(book.id) do %>
-                 <%= book.book_name %>
+                 <%= book.title %>
                  <% end %>
                </div>
                </td>
-             <td><%= book.caption %></td>
+             <td><%= book.body %></td>
              <td></td>
             </tr>
            </tbody>

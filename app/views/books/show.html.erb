@@ -19,21 +19,30 @@
             <tr>
               <td>
               <div>
-                <a><%=link_to user_path(current_user.id) do %>
-                <%= image_tag current_user.get_profile_image(100,100) %>
+                <%=link_to user_path(@books.user.id) do %>
+                <%= image_tag @books.user.get_profile_image(100,100) %>
+                <%= @books.user.name %>
                 <% end %>
-                </a>
               </div>
               </td>
               <td>
-                <a><%= link_to book_path(@books.id) do  %>
+                  <%= link_to book_path(@books.id) do  %>
                   <%= @books.title %>
                   <% end %>
-                  </a>
                 </td>
               <td><%= @books.body %></td>
-              <td><a class="btn btn-sm btn-sucess"><%= link_to "Edit",edit_book_path(@books.id) %></a></td>
-              <td><%= link_to "Destroy",book_path(@books.id), method: :delete,"data-confirm" => "Are you sure?"%></td>
+              <td>
+                <% if @books.user == current_user %>
+                <a class="btn btn-sm btn-sucess"><%= link_to "Edit",edit_book_path(@books.id) %>
+                </a>
+                <% end %>
+                </td>
+
+              <td>
+                <% if @books.user == current_user %>
+                <%= link_to "Destroy",book_path(@books.id), method: :delete,"data-confirm" => "Are you sure?"%>
+                <% end %>
+                </td>
             </tr>
           </tbody>
         </table>
